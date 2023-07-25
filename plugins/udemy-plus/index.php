@@ -25,3 +25,4 @@ include(UP_PLUGIN_DIR . 'includes/register-blocks.php');
 
 // Hooks
 add_action('init', 'up_register_blocks');
+ 
