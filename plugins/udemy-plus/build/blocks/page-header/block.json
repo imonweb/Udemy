@@ -7,7 +7,7 @@
   "description": "Adds a page header",
   "textdomain": "udemy-plus",
   "attributes": {
-    "content":{
+    "content": {
       "type": "string"
     },
     "showCategory": {
