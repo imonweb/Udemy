@@ -19,9 +19,9 @@
   }
 }
 .wp-block-udemy-plus-header-tools .signin-link {
-  margin-right: 0.5rem;
-  display: flex;
-  align-items: center;
+  margin-right: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
 }
 .wp-block-udemy-plus-header-tools .signin-icon {
   position: relative;
@@ -39,7 +39,7 @@
   white-space: nowrap;
   padding-left: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 1rem !important;
 }
 @media (min-width: 1024px) {
   .wp-block-udemy-plus-header-tools .signin-text {
@@ -51,3 +51,17 @@
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
+
+ /*  Custom styles */
+/* .editor-styles-wrapper .wp-block-udemy-plus-header-tools .signin-text {
+  line-height: 1rem !important;
+} */
+
+ 
+/*  modal */
+a.signin-link.open-modal::before {
+  display: none !important;
+}
+/* a.signin-link .open-modal {
+  display: block !important;
+} */
