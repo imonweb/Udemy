@@ -279,12 +279,13 @@ __webpack_require__.r(__webpack_exports__);
       checked: showCategory,
       onChange: showCategory => setAttributes({
         showCategory
-      })
+      }),
+      help: showCategory ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Category Shown', 'udemy-plus') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Custom Content Shown', 'udemy-plus')
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ...blockProps
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "inner-page-header"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    }, showCategory ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Category: Some Category', 'udemy-plus')) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
       tagName: "h1",
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Heading", "udemy-plus"),
       value: content,
