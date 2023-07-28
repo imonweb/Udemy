@@ -39,7 +39,7 @@
   white-space: nowrap;
   padding-left: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1rem !important;
+  line-height: 1.25rem !important;
 }
 @media (min-width: 1024px) {
   .wp-block-udemy-plus-header-tools .signin-text {
@@ -53,9 +53,9 @@
 }
 
  /*  Custom styles */
-/* .editor-styles-wrapper .wp-block-udemy-plus-header-tools .signin-text {
-  line-height: 1rem !important;
-} */
+.editor-styles-wrapper .wp-block-udemy-plus-header-tools .signin-link {
+  /* line-height: 1rem !important; */
+}
 
  
 /*  modal */

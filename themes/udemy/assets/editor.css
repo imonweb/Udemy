@@ -21,6 +21,9 @@
 
 /*  Add Custom */
 .wp-block-udemy-plus-header-tools .signin-text {
-  line-height: 1rem!important;
+  /* line-height: 1rem!important; */
 }
 
+.wp-block-udemy-plus-header-tools {
+  display: flex !important;
+}
