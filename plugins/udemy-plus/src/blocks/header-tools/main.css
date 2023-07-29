@@ -62,6 +62,6 @@
 a.signin-link.open-modal::before {
   display: none !important;
 }
-/* a.signin-link .open-modal {
-  display: block !important;
-} */
+a.signin-link::before {
+  display: none !important;
+}
