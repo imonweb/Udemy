@@ -15,7 +15,7 @@ function up_rest_api_signup_handler($request){
 
   $email = sanitize_email( $params['email'] );
   $username = sanitize_text_field( $params['username'] );
-  $password = sanitize_text_field( $parmas['password'] );
+  $password = sanitize_text_field( $params['password'] );
 
   if(
     username_exists($username) ||
