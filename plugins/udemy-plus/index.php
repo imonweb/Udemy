@@ -36,9 +36,20 @@ foreach($allFiles as $filename){
 // include(UP_PLUGIN_DIR . 'includes/blocks/page-header.php');
 
 // Hooks
+// activate recipe custom post type plugin = includes/activate.php
+register_activation_hook(__FILE__, 'up_activate_plugin');
+
 add_action('init', 'up_register_blocks');
 add_action('rest_api_init', 'up_rest_api_init');
 add_action('wp_enqueue_scripts', 'up_enqueue_scripts');
 // custom post types
 add_action('init', 'up_recipe_post_type');
+// Custome Taxonomy Fields
+add_action('cuisine_add_form_fields', 'up_cuisine_add_form_fields');
+// Saving term metadata = admin/save-cuisine.php
+add_action('create_cuisine', 'up_save_cuisine_meta');
+// Editing Taxonomy Fields = edit the admin/cuisine-fields.php
+add_action('cuisine_edit_form_fields', 'up_cuisine_edit_form_fields');
+// Handle submission = admin/save-cuisine.php
+add_action('edited_cuisine', 'up_save_cuisine_meta');
  
