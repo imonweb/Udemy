@@ -1,3 +1,6 @@
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/blocks/recipe-summary/main.css ***!
+  \****************************************************************************************************************************************************************************************/
 /* Recipe Summary */
 div.wp-block-udemy-plus-recipe-summary {
   position: relative;
@@ -79,3 +82,5 @@ div.wp-block-udemy-plus-recipe-summary {
 .recipe-data.recipe-cuisine > a {
   border: none;
 }
+
+/*# sourceMappingURL=index.css.map*/

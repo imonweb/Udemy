@@ -52,4 +52,6 @@ add_action('create_cuisine', 'up_save_cuisine_meta');
 add_action('cuisine_edit_form_fields', 'up_cuisine_edit_form_fields');
 // Handle submission = admin/save-cuisine.php
 add_action('edited_cuisine', 'up_save_cuisine_meta');
+// Saving Post Metadata =  includes/admin/save-recipe.php
+add_action('save_post_recipe', 'up_save_post_recipe');
  
