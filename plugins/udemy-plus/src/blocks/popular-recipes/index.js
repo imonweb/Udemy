@@ -3,7 +3,8 @@ import {
   useBlockProps, InspectorControls, RichText
 } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
-import { PanelBody } from '@wordpress/components'
+import { PanelBody, QueryControls } from '@wordpress/components'
+import { useSelect } from '@wordpress/data'
 import icons from '../../icons.js'
 import './main.css'
 
@@ -15,11 +16,52 @@ registerBlockType('udemy-plus/popular-recipes', {
     const { title, count, cuisines } = attributes
     const blockProps = useBlockProps()
 
+    const terms = useSelect(select => {
+      return select('core').getEntityRecords(
+        'taxonomy',
+        'cuisine',
+        {
+          per_page: -1
+        }
+        );
+    });
+    const suggestions = {};
+
+    terms?.forEach(term => {
+      suggestions[term.name] = term;
+    });
+
+    // console.log(suggestions)
+
     return (
       <>
         <InspectorControls>
           <PanelBody title={__('Settings', 'udemy-plus')}>
-            
+            <QueryControls 
+              numberOfItems={count}
+              minItems={1}
+              maxItems={10}
+              onNumberOfItemsChange={count => setAttributes({ count })}
+              categorySuggestions={suggestions}
+              onCategoryChange={newTerms => {
+                const newCuisines = []
+
+                newTerms.forEach(cuisine => {
+                  if(typeof cuisine === 'object'){
+                    return newCuisines.push(cuisine);
+                  }
+
+                  const cuisineTerm = terms?.find(
+                    term => term.name === cuisine
+                  )
+
+                  if(cuisineTerm) newCuisines.push(cuisineTerm)
+                })
+
+                setAttributes({ cuisines: newCuisines })
+              }}
+              selectedCategories={cuisines}
+            />
           </PanelBody>
         </InspectorControls>
         <div {...blockProps}>
