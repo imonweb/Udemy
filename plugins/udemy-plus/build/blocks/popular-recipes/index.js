@@ -300,6 +300,17 @@ __webpack_require__.r(__webpack_exports__);
 
     // console.log(suggestions)
 
+    const cuisineIDs = cuisines.map(term => term.id);
+    const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
+      return select("core").getEntityRecords('postType', 'recipe', {
+        per_page: count,
+        _embed: true,
+        cuisine: cuisineIDs,
+        order: "desc",
+        orderByRating: 1
+      });
+    }, [count, cuisineIDs]);
+    console.log(posts);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Settings', 'udemy-plus')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.QueryControls, {

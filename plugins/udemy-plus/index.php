@@ -57,4 +57,6 @@ add_action('save_post_recipe', 'up_save_post_recipe');
 // Custom Image Sizes = includes/setup.php / includes/image-sizes.php
 add_action('after_setup_theme', 'up_setup_theme');
 add_filter('image_size_names_choose', 'up_custom_image_sizes');
+// Ordering Posts by Metadata = includes/rest-api/recipe-query-mod.php
+add_filter('rest_recipe_query', 'up_rest_recipe_query', 10, 2);
  

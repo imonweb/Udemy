@@ -27,11 +27,24 @@ registerBlockType('udemy-plus/popular-recipes', {
     });
     const suggestions = {};
 
-    terms?.forEach(term => {
+    terms?.forEach((term) => {
       suggestions[term.name] = term;
     });
 
     // console.log(suggestions)
+
+    const cuisineIDs = cuisines.map((term) => term.id);
+    const posts = useSelect((select) => {
+      return select("core").getEntityRecords('postType', 'recipe', {
+        per_page: count,
+        _embed: true,
+        cuisine: cuisineIDs,
+        order: "desc",
+        orderByRating: 1,
+      });
+    }, [count, cuisineIDs]);
+
+    console.log(posts);
 
     return (
       <>
