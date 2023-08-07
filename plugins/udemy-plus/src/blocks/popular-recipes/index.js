@@ -85,17 +85,30 @@ registerBlockType('udemy-plus/popular-recipes', {
             onChange={ title => setAttributes({ title }) }
             placeholder={ __('Title', 'udemy-plus') }
           />
-          <div class="single-post">
-            <a class="single-post-image" href="#">
-              <img src="" alt="" />
-            </a>
-            <div class="single-post-detail">
-              <a href="#">Example Title</a>
-              <span>
-                by <a href="#">John Doe</a>
-              </span>
-            </div>
-          </div>
+          {
+            posts?.map(post => {
+              const featuredImage = 
+                post._embedded &&
+                post._embedded["wp:featuredmedia"] &&
+                post._embedded["wp:featuredmedia"].length > 0 &&
+                post._embedded["wp:featuredmedia"][0];
+
+              return (
+                <div class="single-post">
+                  <a class="single-post-image" href="#">
+                    <img src="" alt="" />
+                  </a>
+                  <div class="single-post-detail">
+                    <a href="#">Example Title</a>
+                    <span>
+                      by <a href="#">John Doe</a>
+                    </span>
+                  </div>
+                </div>
+              )
+            })
+          }
+          
         </div>
       </>
     );
