@@ -5,6 +5,7 @@ import {
 import { __ } from '@wordpress/i18n'
 import { PanelBody, QueryControls } from '@wordpress/components'
 import { useSelect } from '@wordpress/data'
+import { RawHTML } from "@wordpress/element"
 import icons from '../../icons.js'
 import './main.css'
 
@@ -95,11 +96,16 @@ registerBlockType('udemy-plus/popular-recipes', {
 
               return (
                 <div class="single-post">
-                  <a class="single-post-image" href="#">
-                    <img src="" alt="" />
-                  </a>
+                  {
+                    featuredImage && (
+                      <a class="single-post-image" href="#">
+                        <img src={featuredImage.medi_details.sizes.thumbnail.source_url} alt={featuredImage.alt_text} />
+                      </a>
+                    )
+                  }
+                 
                   <div class="single-post-detail">
-                    <a href="#">Example Title</a>
+                    <a href={post.link}>{post.title.rendered}</a>
                     <span>
                       by <a href="#">John Doe</a>
                     </span>

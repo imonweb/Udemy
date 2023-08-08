@@ -274,6 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('udemy-plus/popular-recipes', {
   icon: {
     src: _icons_js__WEBPACK_IMPORTED_MODULE_6__["default"].primary
@@ -349,17 +350,17 @@ __webpack_require__.r(__webpack_exports__);
       const featuredImage = post._embedded && post._embedded["wp:featuredmedia"] && post._embedded["wp:featuredmedia"].length > 0 && post._embedded["wp:featuredmedia"][0];
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         class: "single-post"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      }, featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
         class: "single-post-image",
         href: "#"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-        src: "",
-        alt: ""
+        src: featuredImage.medi_details.sizes.thumbnail.source_url,
+        alt: featuredImage.alt_text
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         class: "single-post-detail"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-        href: "#"
-      }, "Example Title"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "by ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+        href: post.link
+      }, post.title.rendered), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "by ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
         href: "#"
       }, "John Doe"))));
     })));
