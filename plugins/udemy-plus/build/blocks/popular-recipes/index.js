@@ -275,7 +275,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('udemy-plus/popular-recipes', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("udemy-plus/popular-recipes", {
   icon: {
     src: _icons_js__WEBPACK_IMPORTED_MODULE_6__["default"].primary
   },
@@ -290,7 +290,7 @@ __webpack_require__.r(__webpack_exports__);
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
     const terms = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
-      return select('core').getEntityRecords('taxonomy', 'cuisine', {
+      return select("core").getEntityRecords("taxonomy", "cuisine", {
         per_page: -1
       });
     });
@@ -352,17 +352,17 @@ __webpack_require__.r(__webpack_exports__);
         class: "single-post"
       }, featuredImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
         class: "single-post-image",
-        href: "#"
+        href: post.link
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-        src: featuredImage.medi_details.sizes.thumbnail.source_url,
+        src: featuredImage.media_details.sizes.thumbnail.source_url,
         alt: featuredImage.alt_text
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         class: "single-post-detail"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
         href: post.link
-      }, post.title.rendered), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "by ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-        href: "#"
-      }, "John Doe"))));
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.RawHTML, null, post.title.rendered)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "by ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+        href: post.link
+      }, post._embeded.author[0].name))));
     })));
   }
 });

@@ -1,30 +1,28 @@
-import { registerBlockType } from '@wordpress/blocks'
-import { 
-  useBlockProps, InspectorControls, RichText
-} from '@wordpress/block-editor'
-import { __ } from '@wordpress/i18n'
-import { PanelBody, QueryControls } from '@wordpress/components'
-import { useSelect } from '@wordpress/data'
-import { RawHTML } from "@wordpress/element"
-import icons from '../../icons.js'
-import './main.css'
+import { registerBlockType } from "@wordpress/blocks";
+import {
+  useBlockProps,
+  InspectorControls,
+  RichText,
+} from "@wordpress/block-editor";
+import { __ } from "@wordpress/i18n";
+import { PanelBody, QueryControls } from "@wordpress/components";
+import { useSelect } from "@wordpress/data";
+import { RawHTML } from "@wordpress/element";
+import icons from "../../icons.js";
+import "./main.css";
 
-registerBlockType('udemy-plus/popular-recipes', {
+registerBlockType("udemy-plus/popular-recipes", {
   icon: {
-    src: icons.primary
+    src: icons.primary,
   },
-	edit({ attributes, setAttributes }) {
-    const { title, count, cuisines } = attributes
-    const blockProps = useBlockProps()
+  edit({ attributes, setAttributes }) {
+    const { title, count, cuisines } = attributes;
+    const blockProps = useBlockProps();
 
-    const terms = useSelect(select => {
-      return select('core').getEntityRecords(
-        'taxonomy',
-        'cuisine',
-        {
-          per_page: -1
-        }
-        );
+    const terms = useSelect((select) => {
+      return select("core").getEntityRecords("taxonomy", "cuisine", {
+        per_page: -1,
+      });
     });
     const suggestions = {};
 
@@ -55,18 +53,18 @@ registerBlockType('udemy-plus/popular-recipes', {
               numberOfItems={count}
               minItems={1}
               maxItems={10}
-              onNumberOfItemsChange={count => setAttributes({ count })}
+              onNumberOfItemsChange={(count) => setAttributes({ count })}
               categorySuggestions={suggestions}
-              onCategoryChange={newTerms => {
+              onCategoryChange={(newTerms) => {
                 const newCuisines = []
 
-                newTerms.forEach(cuisine => {
+                newTerms.forEach((cuisine) => {
                   if(typeof cuisine === 'object'){
                     return newCuisines.push(cuisine);
                   }
 
                   const cuisineTerm = terms?.find(
-                    term => term.name === cuisine
+                    (term) => term.name === cuisine
                   )
 
                   if(cuisineTerm) newCuisines.push(cuisineTerm)
@@ -83,11 +81,11 @@ registerBlockType('udemy-plus/popular-recipes', {
             tagName="h6"
             value={ title }
             withoutInteractiveFormatting
-            onChange={ title => setAttributes({ title }) }
+            onChange={ (title) => setAttributes({ title }) }
             placeholder={ __('Title', 'udemy-plus') }
           />
           {
-            posts?.map(post => {
+            posts?.map((post) => {
               const featuredImage = 
                 post._embedded &&
                 post._embedded["wp:featuredmedia"] &&
@@ -98,16 +96,18 @@ registerBlockType('udemy-plus/popular-recipes', {
                 <div class="single-post">
                   {
                     featuredImage && (
-                      <a class="single-post-image" href="#">
-                        <img src={featuredImage.medi_details.sizes.thumbnail.source_url} alt={featuredImage.alt_text} />
+                      <a class="single-post-image" href={post.link}>
+                        <img src={featuredImage.media_details.sizes.thumbnail.source_url} alt={featuredImage.alt_text} />
                       </a>
                     )
                   }
                  
                   <div class="single-post-detail">
-                    <a href={post.link}>{post.title.rendered}</a>
+                    <a href={post.link}>
+                      <RawHTML>{post.title.rendered}</RawHTML>
+                    </a>
                     <span>
-                      by <a href="#">John Doe</a>
+                      by <a href={post.link}>{post._embeded.author[0].name}</a>
                     </span>
                   </div>
                 </div>
