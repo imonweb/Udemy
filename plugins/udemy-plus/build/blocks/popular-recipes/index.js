@@ -303,7 +303,7 @@ __webpack_require__.r(__webpack_exports__);
 
     const cuisineIDs = cuisines.map(term => term.id);
     const posts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
-      return select("core").getEntityRecords('postType', 'recipe', {
+      return select("core").getEntityRecords("postType", "recipe", {
         per_page: count,
         _embed: true,
         cuisine: cuisineIDs,
@@ -313,7 +313,7 @@ __webpack_require__.r(__webpack_exports__);
     }, [count, cuisineIDs]);
     console.log(posts);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Settings', 'udemy-plus')
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Settings", "udemy-plus")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.QueryControls, {
       numberOfItems: count,
       minItems: 1,
@@ -325,7 +325,7 @@ __webpack_require__.r(__webpack_exports__);
       onCategoryChange: newTerms => {
         const newCuisines = [];
         newTerms.forEach(cuisine => {
-          if (typeof cuisine === 'object') {
+          if (typeof cuisine === "object") {
             return newCuisines.push(cuisine);
           }
           const cuisineTerm = terms?.find(term => term.name === cuisine);
@@ -345,7 +345,7 @@ __webpack_require__.r(__webpack_exports__);
       onChange: title => setAttributes({
         title
       }),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Title', 'udemy-plus')
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Title", "udemy-plus")
     }), posts?.map(post => {
       const featuredImage = post._embedded && post._embedded["wp:featuredmedia"] && post._embedded["wp:featuredmedia"].length > 0 && post._embedded["wp:featuredmedia"][0];
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -362,7 +362,7 @@ __webpack_require__.r(__webpack_exports__);
         href: post.link
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.RawHTML, null, post.title.rendered)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "by ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
         href: post.link
-      }, post._embeded.author[0].name))));
+      }, post._embedded.author[0].name))));
     })));
   }
 });

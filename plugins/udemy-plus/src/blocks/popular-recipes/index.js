@@ -32,45 +32,48 @@ registerBlockType("udemy-plus/popular-recipes", {
 
     // console.log(suggestions)
 
-    const cuisineIDs = cuisines.map((term) => term.id);
-    const posts = useSelect((select) => {
-      return select("core").getEntityRecords('postType', 'recipe', {
-        per_page: count,
-        _embed: true,
-        cuisine: cuisineIDs,
-        order: "desc",
-        orderByRating: 1,
-      });
-    }, [count, cuisineIDs]);
+     const cuisineIDs = cuisines.map((term) => term.id);
+    const posts = useSelect(
+      (select) => {
+        return select("core").getEntityRecords("postType", "recipe", {
+          per_page: count,
+          _embed: true,
+          cuisine: cuisineIDs,
+          order: "desc",
+          orderByRating: 1,
+        });
+      },
+      [count, cuisineIDs]
+    );
 
     console.log(posts);
 
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__('Settings', 'udemy-plus')}>
-            <QueryControls 
+          <PanelBody title={__("Settings", "udemy-plus")}>
+            <QueryControls
               numberOfItems={count}
               minItems={1}
               maxItems={10}
               onNumberOfItemsChange={(count) => setAttributes({ count })}
               categorySuggestions={suggestions}
               onCategoryChange={(newTerms) => {
-                const newCuisines = []
+                const newCuisines = [];
 
                 newTerms.forEach((cuisine) => {
-                  if(typeof cuisine === 'object'){
+                  if (typeof cuisine === "object") {
                     return newCuisines.push(cuisine);
                   }
 
                   const cuisineTerm = terms?.find(
                     (term) => term.name === cuisine
-                  )
+                  );
 
-                  if(cuisineTerm) newCuisines.push(cuisineTerm)
-                })
+                  if (cuisineTerm) newCuisines.push(cuisineTerm);
+                });
 
-                setAttributes({ cuisines: newCuisines })
+                setAttributes({ cuisines: newCuisines });
               }}
               selectedCategories={cuisines}
             />
@@ -79,18 +82,17 @@ registerBlockType("udemy-plus/popular-recipes", {
         <div {...blockProps}>
           <RichText
             tagName="h6"
-            value={ title }
+            value={title}
             withoutInteractiveFormatting
-            onChange={ (title) => setAttributes({ title }) }
-            placeholder={ __('Title', 'udemy-plus') }
+            onChange={(title) => setAttributes({ title })}
+            placeholder={__("Title", "udemy-plus")}
           />
-          {
-            posts?.map((post) => {
-              const featuredImage = 
-                post._embedded &&
-                post._embedded["wp:featuredmedia"] &&
-                post._embedded["wp:featuredmedia"].length > 0 &&
-                post._embedded["wp:featuredmedia"][0];
+          {posts?.map((post) => {
+            const featuredImage =
+              post._embedded &&
+              post._embedded["wp:featuredmedia"] &&
+              post._embedded["wp:featuredmedia"].length > 0 &&
+              post._embedded["wp:featuredmedia"][0];
 
               return (
                 <div class="single-post">
@@ -107,7 +109,7 @@ registerBlockType("udemy-plus/popular-recipes", {
                       <RawHTML>{post.title.rendered}</RawHTML>
                     </a>
                     <span>
-                      by <a href={post.link}>{post._embeded.author[0].name}</a>
+                      by <a href={post.link}>{post._embedded.author[0].name}</a>
                     </span>
                   </div>
                 </div>
