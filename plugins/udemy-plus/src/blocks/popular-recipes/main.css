@@ -2,7 +2,8 @@
 .wp-block-udemy-plus-popular-recipes {
   margin-bottom: 2rem;
 }
-.wp-block-udemy-plus-popular-recipes h6, .editor-styles-wrapper .wp-block-udemy-plus-popular-recipes h6 {
+.wp-block-udemy-plus-popular-recipes h6,
+.editor-styles-wrapper .wp-block-udemy-plus-popular-recipes h6 {
   margin-bottom: 1.25rem;
   margin-top: 0px;
   font-size: 1.25rem;
