@@ -44,6 +44,7 @@ function up_popular_recipes_render_cb($atts){
                     <?php the_title(); ?>
                   </a>
                   <span>
+                    By
                     <href="<?php the_permalink(); ?>">
                       <?php the_author(); ?>
                     </a>
