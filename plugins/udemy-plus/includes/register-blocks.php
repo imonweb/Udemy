@@ -22,7 +22,10 @@ function up_register_blocks() {
     ['name' => 'team-member'],
     ['name' => 'popular-recipes', 'options' => [
       'render_callback' => 'up_popular_recipes_render_cb'
-    ]]
+    ]],
+    ['name' => 'daily-recipe', 'options' => [
+      'render_callback' => 'up_daily_recipe_db'
+    ]] 
     
      
   ];
