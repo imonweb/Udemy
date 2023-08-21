@@ -23,4 +23,4 @@
 function u_plus_alert_box_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
-
+add_action( 'init', 'u_plus_alert_box_block_init' );
