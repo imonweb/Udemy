@@ -1,8 +1,8 @@
 {
 	"name": "alert-box",
 	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "Adds an alert box to output information to the reader.",
+	"author": "John Doe",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
