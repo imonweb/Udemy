@@ -1,24 +1,25 @@
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { Icon } from '@wordpress/components';
 
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {WPElement} Element to render.
- */
-export default function save() {
+export default function save({ attributes }) {
+	const { content, icon, bgColor, textColor } = attributes
+	const blockProps = useBlockProps.save({
+		style: {
+			'border-color': bgColor,
+			'background-color': bgColor,
+			color: textColor
+		}
+	})
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Alert Box – hello from the saved content!' }
-		</p>
-	);
+		<div { ...blockProps }>
+			<Icon 
+				icon={icon}
+			/>
+			<div class="alert-box-content">
+				<RichText.Content tagName="p" value={content} />
+			</div>
+		</div>
+	)
 }

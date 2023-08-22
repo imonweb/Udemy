@@ -1,38 +1,59 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	PanelColorSettings,
+} from "@wordpress/block-editor";
+import { Icon, PanelBody, TextControl } from "@wordpress/components";
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+export default function Edit({ attributes, setAttributes }) {
+	const { content, icon, bgColor, textColor } = attributes;
+	const blockProps = useBlockProps({
+		style: {
+			"border-color": bgColor,
+			"background-color": bgColor,
+			color: textColor,
+		},
+	});
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
- */
-export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Alert Box – hello from the editor!', 'alert-box' ) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={__("Settings", "alert-box")}>
+					<TextControl
+						label={__("Icon", "alert-box")}
+						value={icon}
+						onChange={(icon) => setAttributes({ icon })}
+					/>
+				</PanelBody>
+				<PanelColorSettings
+					title={__("Color Settings")}
+					colorSettings={[
+						{
+							value: bgColor,
+							onChange: (bgColor) => setAttributes({ bgColor }),
+							label: __("Background Color", "alert-box"),
+						},
+						{
+							value: textColor,
+							onChange: (textColor) => setAttributes({ textColor }),
+							label: __("Text Color", "alert-box"),
+						},
+					]}
+				/>
+			</InspectorControls>
+			<div {...blockProps}>
+				<Icon icon={icon} />
+				<div class="alert-box-content">
+					<RichText
+						tagName="p"
+						value={content}
+						onChange={(content) => setAttributes({ content })}
+						placeholder={__("Content Area", "alert-box")}
+					/>
+				</div>
+			</div>
+		</>
 	);
 }
