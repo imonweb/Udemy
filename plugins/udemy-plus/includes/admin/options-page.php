@@ -5,7 +5,9 @@ function up_plugins_options_page(){
   ?>
     <div class="wrap">
       <h1><?php esc_html_e('Udemy Plus Settings', 'udemy-plus' ); ?></h1>
-      <form novalidate="novalidate">
+      <form novalidate="novalidate" method="POST" action="admin-post.php">
+        <input type="hidden" name="action" value="up_save_options" />
+        <?php wp_nonce_field( 'up_options_verify' ); ?>
         <table class="form-table">
           <tbody>
             <!-- Open Graph Title -->
@@ -17,7 +19,9 @@ function up_plugins_options_page(){
               </th>
               <td>
                 <input name="up_og_title" type="text" id="up_og_title"
-                  class="regular-text" />
+                  class="regular-text" 
+                  value="<?php echo esc_attr($options['og_title']); ?>"
+                  />
               </td>
             </tr>
             <!-- Open Graph Image -->
@@ -28,8 +32,10 @@ function up_plugins_options_page(){
                 </label>
               </th>
               <td>
-                <input type="hidden" name="up_og_image" id="up_og_image" />
-                <img id="og-img-preview">
+                <input type="hidden" name="up_og_image" id="up_og_image" 
+                  value="<?php echo esc_attr($options['og_img']); ?>"
+                />
+                <img id="og-img-preview" src="value="<?php echo esc_attr($options['og_img']); ?>"">
                 <a href="#" class="button-primary" id="og-img-btn">
                   Select Image
                 </a>
@@ -47,7 +53,7 @@ function up_plugins_options_page(){
                   id="up_og_description" 
                   name="up_og_description"
                   class="large-text"
-                ></textarea>
+                >value="<?php echo esc_attr($options['og_description']); ?>"</textarea>
               </td>
             </tr>
             <!-- Enable Open Graph -->
@@ -58,13 +64,14 @@ function up_plugins_options_page(){
               <td>
               <label for="up_enable_og"> 
                 <input name="up_enable_og" type="checkbox" id="up_enable_og" 
-                  value="1" /> 
+                  value="1" <?php checked('1', $options['enable_og']); ?> /> 
                 <span>Enable</span>
               </label>
               </td>
             </tr>
           </tbody>
         </table>
+        <?php submit_button(); ?>
       </form>
     </div>
   <?php 
