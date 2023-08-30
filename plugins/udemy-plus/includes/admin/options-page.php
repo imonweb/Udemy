@@ -1,7 +1,7 @@
 <?php 
 
 function up_plugins_options_page(){
-
+  $options = get_option('up_options');
   ?>
     <div class="wrap">
       <h1><?php esc_html_e('Udemy Plus Settings', 'udemy-plus' ); ?></h1>
@@ -35,7 +35,7 @@ function up_plugins_options_page(){
                 <input type="hidden" name="up_og_image" id="up_og_image" 
                   value="<?php echo esc_attr($options['og_img']); ?>"
                 />
-                <img id="og-img-preview" src="value="<?php echo esc_attr($options['og_img']); ?>"">
+                <img id="og-img-preview" src="<?php echo esc_attr($options['og_img']); ?>">
                 <a href="#" class="button-primary" id="og-img-btn">
                   Select Image
                 </a>
@@ -53,7 +53,7 @@ function up_plugins_options_page(){
                   id="up_og_description" 
                   name="up_og_description"
                   class="large-text"
-                >value="<?php echo esc_attr($options['og_description']); ?>"</textarea>
+                  value="<?php echo esc_attr($options['og_description']); ?>"></textarea>
               </td>
             </tr>
             <!-- Enable Open Graph -->
