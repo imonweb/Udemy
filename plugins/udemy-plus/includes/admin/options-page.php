@@ -37,7 +37,7 @@ function up_plugins_options_page(){
               </td>
             </tr>
             <!-- Open Graph Image -->
-            <>
+            <tr>
               <th>
                 <label for="up_og_image">
                   <?php esc_html_e('Open Graph Image', 'udemy-plus'); ?>
@@ -52,7 +52,13 @@ function up_plugins_options_page(){
                   Select Image
                 </a>
               </td>
-            </
+            </tr>
+            <!-- Open Graph Description -->
+            <tr>
+              <th>
+                <label for="up_og_description">
+                  <?php esc_html_e('Open Graph Description', 'udemy-plus'); ?>
+                </label>
               </th>
               <td>
                 <textarea 
