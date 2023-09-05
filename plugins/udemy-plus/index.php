@@ -64,3 +64,5 @@ add_filter('rest_recipe_query', 'up_rest_recipe_query', 10, 2);
 add_action('admin_menu', 'up_admin_menus');
 // Handling Admin Form Submission
 add_action('admin_post_up_save_options', 'up_save_options');
+// Enqueuing the Media Library
+add_action('admin_enqueue_scripts', 'up_admin_enqueue');
