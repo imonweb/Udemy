@@ -1,1 +1,1 @@
-console.log('Admin page');
+import "./main.css";
